@@ -8,8 +8,6 @@ import {
 	type SendPaymentResponse,
 	type KeysendArgs
 } from 'webln';
-// import { requestInvoice } from 'lnurl-pay'
-
 
 interface PaymentResponse {
 	preimage: string;
@@ -74,15 +72,16 @@ export async function makeInvoice(args: RequestInvoiceArgs) {
 export async function sendPayment(paymentRequest: string) {
 	try {
 		const webln = await requestProvider();
-    webln.enable();
+		await webln.enable();
 		const response = await webln.sendPayment(paymentRequest);
-		console.log('pre',await response);
-
-		paymentResponse.set(response);
+    return false
+		// paymentResponse.set(response);
 	} catch (err: any) {
 		// Why use "any" annotation? https://stackoverflow.com/a/69021263
 		// Tell the user what went wrong
+    console.log('err!', err)
 		alert(err.message);
+    return true
 	}
 }
 
@@ -125,50 +124,4 @@ export async function login(paymentRequest: string) {
 	// }
 }
 
-async function paymentCycle(
-	webln: WebLNProvider,
-	satoshisPerInterval: number,
-	memo: string | undefined
-) {
-  // const { invoice, params, successAction, validatePreimage } =
-  // await requestInvoice({
-  //   lnUrlOrAddress:
-  //     'lnurl1dp68gurn8ghj7urp0yh8xarpva5kueewvaskcmme9e5k7tewwajkcmpdddhx7amw9akxuatjd3cz7atnv4erqgfuvv5',
-  //   tokens: 333, // satoshis
-  // })
-	// const { paymentRequest } = await webln.makeInvoice({
-	// 	defaultAmount: satoshisPerInterval,
-	// 	// defaultMemo: memo || undefined
-	// });
-	// const preimage = await webln.sendPayment(paymentRequest);
-	// console.log('Payment cycle: ', paymentRequest, preimage);
-}
-
-export async function stream(
-	satoshisPerInterval: number,
-	paymentIntervalSeconds = 1,
-	memo: string | undefined = undefined,
-	maxIntervals: number | null = null
-) {
-	// Generate multiple payment requests
-	const webln = await requestProvider();
-	await webln.enable();
-
-	await paymentCycle(webln, satoshisPerInterval, memo);
-	// Stream -> call sendPayment multiple times as long as budget allows
-	// Use setTimeout to ensure it's not constantly calling
-	// makeInvoice
-	// sendPayment
-	// Get the current value of streaming
-	let isStreaming = get(streaming);
-	const stream = setInterval(async () => {
-		isStreaming = get(streaming);
-		console.log('Currently streaming', isStreaming);
-		if (!isStreaming) {
-			console.log('Stream stopping');
-			clearInterval(stream);
-		}
-	}, paymentIntervalSeconds * 1000);
-
-	console.log('outside stream', isStreaming);
-}
+// export async function toggleStream

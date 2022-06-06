@@ -36,8 +36,9 @@
 	"type": "module",
 	"dependencies": {
 		"bolt11": "^1.4.0",
+		"lightning": "^5.16.0",
+		"ln-service": "^53.17.0",
 		"lnurl": "^0.24.1",
-		"lnurl-pay": "^0.2.3",
 		"webln": "^0.3.0"
 	}
 }

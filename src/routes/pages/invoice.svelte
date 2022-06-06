@@ -22,8 +22,6 @@
 
 	function handleSendPaymentClick() {
 		// Use if you're not making your own payment request
-		// console.log($invoice);
-
 		sendPayment(paymentRequest);
 	}
 </script>
