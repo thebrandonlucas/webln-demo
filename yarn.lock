@@ -213,6 +213,13 @@
     "set-cookie-parser" "^2.4.8"
     "tiny-glob" "^0.2.9"
 
+"@sveltejs/adapter-node@^1.0.0-next.78":
+  "integrity" "sha512-TXB5Ii0z/7o1B05p/YLsS4t+JUHFHWBzFv1U16TKvM3HMbMUJIx+AhpM2WJfDX8HtAyfd1m9OawGoUB+1ed24A=="
+  "resolved" "https://registry.npmjs.org/@sveltejs/adapter-node/-/adapter-node-1.0.0-next.78.tgz"
+  "version" "1.0.0-next.78"
+  dependencies:
+    "tiny-glob" "^0.2.9"
+
 "@sveltejs/adapter-vercel@1.0.0-next.58":
   "integrity" "sha512-Gw76HhwHh2sWP2RN8jwm4jMmO5rnvvWsPsnAhFRCYlIs6gwKf/mNE/CfTQ1nkqKEm15YEYHjKXRVRjI8BniwxA=="
   "resolved" "https://registry.npmjs.org/@sveltejs/adapter-vercel/-/adapter-vercel-1.0.0-next.58.tgz"

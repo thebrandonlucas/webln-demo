@@ -3,10 +3,10 @@
 		activateWebln,
 		getInfo,
 		makeInvoice,
-		sendPayment,
 		invoice,
-		paymentResponse
-	} from '../../scripts/webln';
+		paymentResponse,
+		sendPayment
+	} from '$lib/scripts/webln';
 	import type { RequestInvoiceArgs } from 'webln';
 
 	let defaultAmount = 0;
@@ -20,7 +20,7 @@
 		makeInvoice({ defaultAmount, minimumAmount, maximumAmount, defaultMemo });
 	}
 
-	function handleSendPaymentClick() {
+	async function handleSendPaymentClick() {
 		// Use if you're not making your own payment request
 		sendPayment(paymentRequest);
 	}

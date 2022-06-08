@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { keysend, keysendPreimage } from '../../scripts/webln';
+	import { keysend, keysendPreimage } from '../../lib/scripts/webln';
 	import Index from '../index.svelte';
 
 	let pubkeyDestination: string;

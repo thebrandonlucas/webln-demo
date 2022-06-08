@@ -16,9 +16,9 @@ text-black text-xl transition-all md:flex"
 	<a href="/pages/invoice">Invoice</a>
 	<a href="/pages/keysend">Keysend</a>
 	<a href="/pages/login">Login</a>
-	<a href="/pages/nodeInfo">Node Info</a>
-	<a href="/pages/payStreamVideo">Pay to Stream Video</a>
-	<a href="/pages/payScroll">Pay to Scroll</a>
+	<a href="/pages/node">Node Info</a>
+	<a href="/pages/video">Pay to Stream Video</a>
+	<a href="/pages/scroll">Pay to Scroll</a>
 </nav>
 
 <div
