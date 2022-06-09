@@ -3,12 +3,10 @@ import { lnd } from '$lib/ln-server';
 import type { Invoice } from '$lib/types/invoice';
 
 export async function get(request: any) {
-  // request invoice here
-
 	try {
 		const invoice: Invoice = await lightning.createInvoice({
 			lnd,
-			tokens: 2,
+			tokens: 1,
 			description: 'Video payment invoice (1 second)'
 		});
 

@@ -92,9 +92,22 @@
 	}
 </script>
 
-<h1 class="text-4xl text-center">Guess the video!</h1>
+<div class="w-1/2 mx-auto text-center">
+  <h1 class="text-4xl my-4">Pay for video by the second!</h1>
+  <p>Click "Stream!" to play a video for a rate of 1 sat (or about $0.0003) per second</p>
+  <br />
+  <p>
+    NOTE: This is very experimental, so I would HIGHLY recommend using a Regtest environment with a
+    tool like <a class="lnlink" href="https://lightningpolar.com/">Polar</a> so you don't risk losing real sats!
+  </p>
+  <br />
+</div>
 
-<div class="w-1/2 mx-auto">
+<div class="w-1/2 mx-auto text-center">
+
+
+
+	<!-- svelte-ignore component-name-lowercase -->
 	<video
 		poster="https://i.kym-cdn.com/entries/icons/original/000/018/489/nick-young-confused-face-300x256-nqlyaa.jpg"
 		src={displayVideo}
@@ -114,7 +127,7 @@
 			<span class="time">{format(duration)}</span>
 		</div>
 	</div>
-	<button type="button" class="lnbtn" on:click={handleStreamClick}>
+	<button type="button" class="lnbtn my-3 self-center" on:click={handleStreamClick}>
 		{#if streamToggled}
 			Stop Streaming
 		{:else}
