@@ -2,6 +2,7 @@ import lightning from 'lightning';
 import { lnd } from '$lib/ln-server';
 import type { Invoice } from '$lib/types/invoice';
 
+
 export async function get(request: any) {
 	try {
 		const invoice: Invoice = await lightning.createInvoice({
