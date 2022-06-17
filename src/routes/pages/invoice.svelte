@@ -12,7 +12,11 @@
 	let paymentRequest = '';
 
 	function handleMakeInvoiceClick() {
-		makeInvoice({ defaultAmount, minimumAmount, maximumAmount, defaultMemo });
+		try {
+			makeInvoice({ defaultAmount, minimumAmount, maximumAmount, defaultMemo });
+		} catch (e: any) {
+			throw new Error(e);
+		}
 	}
 
 	async function handleSendPaymentClick() {
@@ -39,14 +43,18 @@
 		This page demonstrates two core <a
 			href="https://www.webln.guide/introduction/welcome"
 			class="text-bitcoin-orange hover:text-yellow-300 transition-all">WebLN</a
-		> functionalities: <code>makeInvoice</code> and <code>sendPayment</code>
+		>
+		functionalities: <code>makeInvoice</code> and <code>sendPayment</code>
 	</p>
-  <p>You can test payments for yourself by using two different accounts, creating an invoice using one account, and paying if with another </p>
-  <br />
+	<p>
+		You can test payments for yourself by using two different accounts, creating an invoice using
+		one account, and paying if with another
+	</p>
+	<br />
 	<div class="flex flex-col md:flex-row">
 		<Card btnText="Make Invoice" title="Create an Invoice" btnClickHandler={handleMakeInvoiceClick}>
-			<p></p>
-      <label for="amount" class="self-start">Amount</label>
+			<p />
+			<label for="amount" class="self-start">Amount</label>
 			<input
 				id="amount"
 				class="p-3 border-2 rounded-md focus:outline-bitcoin-orange"

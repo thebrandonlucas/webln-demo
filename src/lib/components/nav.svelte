@@ -12,7 +12,7 @@
 	class="hidden flex-row bg-yellow-300 justify-around items-center text-center 
 text-black text-xl transition-all md:flex"
 >
-	<a href="/"><img src="./narsil-logo.png" class="w-20 h-20" /></a>
+	<a href="/"><img src="/narsil-logo.png" class="w-20 h-20" alt="logo" /></a>
 	<a class="link" href="/pages/invoice">Invoice</a>
 	<!-- <a href="/pages/keysend">Keysend</a> -->
 	<!-- <a href="/pages/login">Login</a> -->

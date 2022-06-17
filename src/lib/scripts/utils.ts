@@ -3,24 +3,23 @@ export async function delay(ms = 1000) {
 }
 
 // Source: https://stackoverflow.com/a/48161723
-export async function sha256(message: string) {
-  // encode as UTF-8
-  const msgBuffer = new TextEncoder().encode(message);                    
+export function sha256(message: string) {
+  const match = message.match(/.{1,2}/g);
+  if (!match) return null;
+  const msgUint8 = new Uint8Array(match.map((byte) => parseInt(byte, 16)));
 
-  // hash the message
-  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-
-  // convert ArrayBuffer to Array
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-
-  // convert bytes to hex string                  
-  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  return hashHex;
+  //const msgUint8 = new TextEncoder().encode(message);
+  return crypto.subtle.digest('SHA-256', msgUint8).then(hashBuffer => {
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+  });
 }
 
-export async function validatePayment(preimage: string, paymentHashSecret: string) {
-	// const hash = await sha256(preimage);
-	// if (hash === paymentHash) return true;
-	// return false;
-  return preimage === paymentHashSecret;
+// If hash of preimage === paymentHash, return true
+export async function validatePayment(preimage: string, paymentHash: string) {
+	const hash = await sha256(preimage);
+	if (hash === paymentHash) return true;
+	return false;
+  // return preimage === paymentHashSecret;
 }

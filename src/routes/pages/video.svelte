@@ -6,6 +6,8 @@
 	import { validatePayment } from '$lib/scripts/utils';
 	import video from '$lib/.assets/never_gonna_give.mp4';
 
+  const PAYMENT_INTERVAL_MS = 5000
+
 	let streamToggled = false;
 	// These values are bound to properties of the video
 	let time = 0;
@@ -51,17 +53,18 @@
 				// 	Range: 'bytes=0-499'
 				// }
 			});
-			const invoice: Invoice = (await response.json()).invoice;
+			const { payment_request, payment_hash } = await response.json();
 
 			// If payment takes longer than a second,
 			// make the video stop until payment has been secured
 			const timeout = setTimeout(() => {
 				paused = true;
-			}, 1000);
-			const payment = await sendPayment(invoice.request);
+			}, PAYMENT_INTERVAL_MS);
+			const paymentResponse = await sendPayment(payment_request);
 			clearTimeout(timeout);
 
-			const isPaymentValid = await validatePayment(payment.preimage, invoice.secret);
+			const isPaymentValid = await validatePayment(paymentResponse.preimage, payment_hash);
+
 			if (isPaymentValid) {
 				paused = false;
 				displayVideo = video;
@@ -83,7 +86,8 @@
 			for (let i = 0; i < 100; i++) {
 				if (!streamToggled) break;
 				await payStream();
-				await delay(1000);
+        // Add a delay between payment streams
+        // await delay(1000);
 			}
 		} else {
 			paused = true;
@@ -94,12 +98,12 @@
 
 <div class="w-1/2 mx-auto text-center">
   <h1 class="text-4xl my-4">Pay for video by the second!</h1>
-  <p>Click "Stream!" to play a video for a rate of 1 sat (or about $0.0003) per second</p>
+  <p>Click "Stream!" to play a video for a rate of 2 sats per 5 seconds</p>
   <br />
-  <p>
+  <!-- <p>
     NOTE: This is very experimental, so I would HIGHLY recommend using a Regtest environment with a
     tool like <a class="lnlink" href="https://lightningpolar.com/">Polar</a> so you don't risk losing real sats!
-  </p>
+  </p> -->
   <br />
 </div>
 
