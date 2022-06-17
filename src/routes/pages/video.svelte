@@ -1,12 +1,9 @@
 <script lang="ts">
-	import type { Invoice } from '$lib/types/invoice';
-	import { delay } from '$lib/scripts/utils';
-
 	import { sendPayment } from '$lib/scripts/webln';
-	import { validatePayment } from '$lib/scripts/utils';
+	import { delay, validatePayment } from '$lib/scripts/utils';
 	import video from '$lib/.assets/never_gonna_give.mp4';
 
-  const PAYMENT_INTERVAL_MS = 5000
+	const PAYMENT_INTERVAL_MS = 5000;
 
 	let streamToggled = false;
 	// These values are bound to properties of the video
@@ -83,12 +80,16 @@
 	async function handleStreamClick() {
 		if (!streamToggled) {
 			streamToggled = true;
-			for (let i = 0; i < 100; i++) {
+			// 240 seconds is approx length of video / 5 = 48
+			const VIDEO_PAYMENT_INTERVALS = 48;
+			for (let i = 0; i < VIDEO_PAYMENT_INTERVALS; i++) {
 				if (!streamToggled) break;
 				await payStream();
-        // Add a delay between payment streams
-        // await delay(1000);
+				// Only request payment after the first interval is up
+				await delay(PAYMENT_INTERVAL_MS);
 			}
+      paused = true;
+      streamToggled = false;
 		} else {
 			paused = true;
 			streamToggled = false;
@@ -97,20 +98,14 @@
 </script>
 
 <div class="w-1/2 mx-auto text-center">
-  <h1 class="text-4xl my-4">Pay for video by the second!</h1>
-  <p>Click "Stream!" to play a video for a rate of 2 sats per 5 seconds</p>
-  <br />
-  <!-- <p>
-    NOTE: This is very experimental, so I would HIGHLY recommend using a Regtest environment with a
-    tool like <a class="lnlink" href="https://lightningpolar.com/">Polar</a> so you don't risk losing real sats!
-  </p> -->
-  <br />
+	<h1 class="text-4xl my-4">Pay for video by the second!</h1>
+	<p>Click "Stream!" to play a video for a rate of 2 sats per 5 seconds</p>
+	<br />
+	<p>Remember to set a budget!</p>
+	<br />
 </div>
 
 <div class="w-1/2 mx-auto text-center">
-
-
-
 	<!-- svelte-ignore component-name-lowercase -->
 	<video
 		poster="https://i.kym-cdn.com/entries/icons/original/000/018/489/nick-young-confused-face-300x256-nqlyaa.jpg"

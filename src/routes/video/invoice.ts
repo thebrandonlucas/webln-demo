@@ -1,6 +1,3 @@
-import lightning from 'lightning';
-import { lnd } from '$lib/ln-server';
-import type { Invoice } from '$lib/types/invoice';
 import lnurl from 'lnurl-pay';
 import { parsePaymentRequest } from 'invoices';
 
@@ -9,14 +6,6 @@ const AMOUNT = 2;
 
 export async function get(request: any) {
 	try {
-		// using GRPC
-		// const invoice: Invoice = await lightning.createInvoice({
-		// 	lnd,
-		// 	tokens: 1,
-		// 	description: 'Video payment invoice (1 second)'
-		// });
-
-		// using lnurl
 		const { invoice } = await lnurl.requestInvoice({
 			lnUrlOrAddress: RECIPIENT,
 			tokens: AMOUNT
