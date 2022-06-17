@@ -1,5 +1,5 @@
 <script>
-	import { getInfo, info } from '../../lib/scripts/webln';
+	// import { getInfo, info } from '../../lib/scripts/webln';
 </script>
 
 <h1 class="text-4xl">Node Info</h1>
