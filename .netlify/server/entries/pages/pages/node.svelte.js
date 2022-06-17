@@ -22,15 +22,5 @@ __export(stdin_exports, {
 module.exports = __toCommonJS(stdin_exports);
 var import_index_61e3dd22 = require("../../../chunks/index-61e3dd22.js");
 const Node = (0, import_index_61e3dd22.c)(($$result, $$props, $$bindings, slots) => {
-  let $info, $$unsubscribe_info;
-  $$unsubscribe_info = (0, import_index_61e3dd22.a)(info, (value) => $info = value);
-  $$unsubscribe_info();
-  return `<h1 class="${"text-4xl"}">Node Info</h1>
-<p>Retrieve information about your lightning node</p>
-
-<button class="${"lnbtn"}">Get Node Info</button>
-
-${$info ? `<p>Alias: ${(0, import_index_61e3dd22.e)($info.node.alias)}</p>
-	<p>Pubkey: ${(0, import_index_61e3dd22.e)($info.node.pubkey)}</p>
-	<p>Color: ${(0, import_index_61e3dd22.e)($info.node.color)}</p>` : ``}`;
+  return ``;
 });

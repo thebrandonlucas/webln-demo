@@ -28,7 +28,7 @@ const manifest = {
   assets: /* @__PURE__ */ new Set(["favicon.png", "narsil-logo.png"]),
   mimeTypes: { ".png": "image/png" },
   _: {
-    entry: { "file": "start-a86c2399.js", "js": ["start-a86c2399.js", "chunks/index-c83b5075.js", "chunks/index-750aea8d.js"], "css": [] },
+    entry: { "file": "start-b299f5cb.js", "js": ["start-b299f5cb.js", "chunks/index-c83b5075.js", "chunks/index-750aea8d.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => __toESM(require("./nodes/0.js"))),
       () => Promise.resolve().then(() => __toESM(require("./nodes/1.js"))),
