@@ -10,6 +10,7 @@ export async function get(request: any) {
 			lnUrlOrAddress: RECIPIENT,
 			tokens: AMOUNT
 		});
+    console.log('payment req server', invoice);
 
 		const invoiceParsed = parsePaymentRequest({ request: invoice });
 
