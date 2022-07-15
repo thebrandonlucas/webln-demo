@@ -19,7 +19,7 @@ export async function get(request: any) {
 			body: {
         hello: 'hello', 
 				payment_request: invoice,
-				payment_hash: invoiceParsed.id
+				payment_hash: invoiceParsed.id,
 			}
 		};
 	} catch (err) {
@@ -27,7 +27,8 @@ export async function get(request: any) {
 			status: 500,
 			body: {
 				error: err.message,
-        message: "hello"
+        message: "hello",
+        lnurl: lnurl
 			}
 		};
 	}
