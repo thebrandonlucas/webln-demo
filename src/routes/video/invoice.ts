@@ -26,7 +26,8 @@ export async function get(request: any) {
 		return {
 			status: 500,
 			body: {
-				error: console.error('hello', err)
+				error: console.error( err),
+        message: "hello"
 			}
 		};
 	}
