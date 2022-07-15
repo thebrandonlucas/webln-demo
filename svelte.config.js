@@ -5,6 +5,8 @@ import adapter from '@sveltejs/adapter-netlify';
 const pkg = await import('./package.json', { assert: { type: 'json' } });
 
 /** @type {import('@sveltejs/kit').Config} */
+
+console.log('PACKAGE', Object.keys(pkg.dependencies || {}))
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
