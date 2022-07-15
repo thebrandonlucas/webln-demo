@@ -2,10 +2,10 @@
 	"name": "webln-experiment",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "env-cmd svelte-kit dev",
-		"build": "env-cmd svelte-kit build",
+		"dev": "svelte-kit dev",
+		"build": "svelte-kit build",
 		"package": "svelte-kit package",
-		"preview": "env-cmd svelte-kit preview",
+		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync",
 		"test": "playwright test",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
@@ -39,9 +39,11 @@
 	"dependencies": {
 		"bolt11": "^1.4.0",
 		"env-cmd": "^10.1.0",
+		"invoices": "^2.0.7",
 		"lightning": "^5.16.0",
 		"ln-service": "^53.17.0",
 		"lnurl": "^0.24.1",
+		"lnurl-pay": "^1.0.0",
 		"socks": "^1.1.10",
 		"socks-proxy-agent": "^7.0.0",
 		"webln": "^0.3.0"

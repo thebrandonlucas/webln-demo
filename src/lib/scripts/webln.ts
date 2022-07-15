@@ -21,7 +21,6 @@ export const paymentResponse = writable<PaymentResponse>();
 export const info = writable<GetInfoResponse>();
 export const keysendPreimage = writable<SendPaymentResponse>();
 
-
 export async function activateWebln() {
 	// try {
 	// 	const webln = await requestProvider();
@@ -33,16 +32,16 @@ export async function activateWebln() {
 	// }
 }
 
-export async function getInfo() {
-	try {
-		const _info: GetInfoResponse = await webln.getInfo();
-		info.set(_info);
-	} catch (err: any) {
-		// Why use "any" annotation? https://stackoverflow.com/a/69021263
-		// Tell the user what went wrong
-		throw Error(err);
-	}
-}
+// export async function getInfo() {
+// 	try {
+// 		const _info: GetInfoResponse = await webln.getInfo();
+// 		info.set(_info);
+// 	} catch (err: any) {
+// 		// Why use "any" annotation? https://stackoverflow.com/a/69021263
+// 		// Tell the user what went wrong
+// 		throw Error(err);
+// 	}
+// }
 
 export async function makeInvoice(args: RequestInvoiceArgs) {
 	try {
@@ -66,8 +65,8 @@ export async function makeInvoice(args: RequestInvoiceArgs) {
  */
 export async function sendPayment(paymentRequest: string) {
 	try {
-    const webln = await requestProvider();
-    await webln.enable();
+		const webln = await requestProvider();
+		await webln.enable();
 		return await webln.sendPayment(paymentRequest);
 	} catch (err: any) {
 		// TODO: make everything THROW an error instead of returning error messages
@@ -88,10 +87,8 @@ export async function keysend({ destination, amount, customRecords }: KeysendArg
 					destination,
 					amount
 			  };
-		console.log(args);
 		const _preimage = await webln.keysend(args);
 
-		console.log('keysend', _preimage);
 		keysendPreimage.set(_preimage);
 	} catch (err: any) {
 		// Why use "any" annotation? https://stackoverflow.com/a/69021263
@@ -100,7 +97,7 @@ export async function keysend({ destination, amount, customRecords }: KeysendArg
 	}
 }
 
-export async function login(paymentRequest: string) {
+// export async function login(paymentRequest: string) {
 	// TODO: use lnurl auth
 	// try {
 	// 	const webln = await requestProvider();
@@ -112,4 +109,4 @@ export async function login(paymentRequest: string) {
 	// 	// Tell the user what went wrong
 	// 	alert(err.message);
 	// }
-}
+// }

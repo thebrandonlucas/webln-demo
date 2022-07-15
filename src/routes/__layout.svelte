@@ -9,10 +9,10 @@
 	<slot />
 </div>
 
-<div class="text-center mb-4">
+<!-- <div class="text-center mb-4">
 	<a
 		href="https://twitter.com/brandonstlucas"
 		target="_blank"
 		class="text-xl text-bitcoin-orange hover:text-yellow-300">bslucas@getalby.com</a
 	>
-</div>
+</div> -->

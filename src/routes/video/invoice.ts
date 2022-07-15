@@ -1,23 +1,24 @@
-import lightning from 'lightning';
-import { lnd } from '$lib/ln-server';
-import type { Invoice } from '$lib/types/invoice';
+import lnurl from 'lnurl-pay';
+import { parsePaymentRequest } from 'invoices';
 
+const RECIPIENT = 'bslucas@getalby.com';
+const AMOUNT = 2;
 
 export async function get(request: any) {
 	try {
-		const invoice: Invoice = await lightning.createInvoice({
-			lnd,
-			tokens: 1,
-			description: 'Video payment invoice (1 second)'
+		const { invoice } = await lnurl.requestInvoice({
+			lnUrlOrAddress: RECIPIENT,
+			tokens: AMOUNT
 		});
+		console.log('payment req server', invoice);
+
+		const invoiceParsed = parsePaymentRequest({ request: invoice });
 
 		return {
 			status: 200,
 			body: {
-				invoice
-			},
-			headers: {
-				'set-cookie': ['_ln_id', invoice.id]
+				payment_request: invoice,
+				payment_hash: invoiceParsed.id
 			}
 		};
 	} catch (err) {
