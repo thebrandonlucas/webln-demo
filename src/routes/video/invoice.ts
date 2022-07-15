@@ -10,7 +10,7 @@ export async function get(request: any) {
 			lnUrlOrAddress: RECIPIENT,
 			tokens: AMOUNT
 		});
-    console.log('payment req server', invoice);
+		console.log('payment req server', invoice);
 
 		const invoiceParsed = parsePaymentRequest({ request: invoice });
 
@@ -19,10 +19,7 @@ export async function get(request: any) {
 			body: {
 				payment_request: invoice,
 				payment_hash: invoiceParsed.id
-			},
-			// headers: {
-			// 	'set-cookie': ['_ln_id', invoiceParsed.id]
-			// }
+			}
 		};
 	} catch (err) {
 		return {
