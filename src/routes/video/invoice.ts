@@ -27,7 +27,7 @@ export async function get(request: any) {
 			status: 500,
 			body: {
 				error: err.message,
-        message: lnurl,
+        message: JSON.stringify(lnurl),
 			}
 		};
 	}
