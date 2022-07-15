@@ -17,7 +17,6 @@ export async function get(request: any) {
 		return {
 			status: 200,
 			body: {
-        hello: 'hello'
 				payment_request: invoice,
 				payment_hash: invoiceParsed.id
 			}
