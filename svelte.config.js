@@ -2,7 +2,9 @@
 import preprocess from 'svelte-preprocess';
 
 import adapter from '@sveltejs/adapter-netlify';
-import pkg from './package.json'
+// import pkg from './package.json'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pkg = require('./package.json')
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
