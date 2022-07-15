@@ -26,7 +26,7 @@ export async function get(request: any) {
 		return {
 			status: 500,
 			body: {
-				error: JSON.stringify(err),
+				error: err.message,
         message: "hello"
 			}
 		};
