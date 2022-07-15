@@ -6,20 +6,20 @@ const AMOUNT = 2;
 
 export async function get(request: any) {
 	try {
-		// const { invoice } = await lnurl.requestInvoice({
-		// 	lnUrlOrAddress: RECIPIENT,
-		// 	tokens: AMOUNT
-		// });
+		const { invoice } = await lnurl.requestInvoice({
+			lnUrlOrAddress: RECIPIENT,
+			tokens: AMOUNT
+		});
 		console.log('payment req server');
 
-		// const invoiceParsed = parsePaymentRequest({ request: invoice });
+		const invoiceParsed = parsePaymentRequest({ request: invoice });
 
 		return {
 			status: 200,
 			body: {
         hello: 'hello', 
-				// payment_request: invoice,
-				// payment_hash: invoiceParsed.id
+				payment_request: invoice,
+				payment_hash: invoiceParsed.id
 			}
 		};
 	} catch (err) {
