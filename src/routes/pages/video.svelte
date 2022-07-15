@@ -44,6 +44,7 @@
 
 	async function payStream() {
 		try {
+      console.log('before')
 			const response: Response = await fetch('/video/invoice', {
 				// TODO: implement streaming on server side
 				// headers: {
@@ -52,12 +53,14 @@
 			});
 			const { payment_request, payment_hash } = await response.json();
 
+      console.log('pay request', payment_request, payment_hash)
 			// If payment takes longer than a second,
 			// make the video stop until payment has been secured
 			const timeout = setTimeout(() => {
 				paused = true;
 			}, PAYMENT_INTERVAL_MS);
 			const paymentResponse = await sendPayment(payment_request);
+      console.log('payresponse', paymentResponse)
 			clearTimeout(timeout);
 
 			const isPaymentValid = await validatePayment(paymentResponse.preimage, payment_hash);

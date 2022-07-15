@@ -19,9 +19,9 @@ export async function get(request: any) {
 				payment_request: invoice,
 				payment_hash: invoiceParsed.id
 			},
-			headers: {
-				'set-cookie': ['_ln_id', invoiceParsed.id]
-			}
+			// headers: {
+			// 	'set-cookie': ['_ln_id', invoiceParsed.id]
+			// }
 		};
 	} catch (err) {
 		return {
