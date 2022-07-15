@@ -12,7 +12,7 @@ export async function get(request: any) {
 		});
 		console.log('payment req server');
 
-		const invoiceParsed = parsePaymentRequest({ request: invoice });
+		// const invoiceParsed = parsePaymentRequest({ request: invoice });
 
 		return {
 			status: 200,
