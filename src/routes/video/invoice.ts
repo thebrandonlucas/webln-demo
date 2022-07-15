@@ -12,13 +12,13 @@ export async function get(request: any) {
 		});
 		console.log('payment req server', invoice);
 
-		const invoiceParsed = parsePaymentRequest({ request: invoice });
+		// const invoiceParsed = parsePaymentRequest({ request: invoice });
 
 		return {
 			status: 200,
 			body: {
 				payment_request: invoice,
-				payment_hash: invoiceParsed.id
+				// payment_hash: invoiceParsed.id
 			}
 		};
 	} catch (err) {
