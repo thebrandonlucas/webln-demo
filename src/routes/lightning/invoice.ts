@@ -30,4 +30,10 @@ export async function get(request: RequestHandler) {
   //     }
   //   }
   // }
+  return {
+    status: 200,
+    body: {
+      hello: 'hello'
+    }
+  }
 }
