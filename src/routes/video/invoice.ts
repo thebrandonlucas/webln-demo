@@ -6,10 +6,10 @@ const AMOUNT = 2;
 
 export async function get(request: any) {
 	try {
-		const { invoice } = await lnurl.requestInvoice({
-			lnUrlOrAddress: RECIPIENT,
-			tokens: AMOUNT
-		});
+		// const { invoice } = await lnurl.requestInvoice({
+		// 	lnUrlOrAddress: RECIPIENT,
+		// 	tokens: AMOUNT
+		// });
 		console.log('payment req server');
 
 		// const invoiceParsed = parsePaymentRequest({ request: invoice });
