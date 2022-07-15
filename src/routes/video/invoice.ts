@@ -18,7 +18,7 @@ export async function get(request: any) {
 			status: 200,
 			body: {
         hello: 'hello', 
-				payment_request: invoice,
+				// payment_request: invoice,
 				// payment_hash: invoiceParsed.id
 			}
 		};
