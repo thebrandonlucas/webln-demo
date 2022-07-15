@@ -6,18 +6,19 @@ const AMOUNT = 2;
 
 export async function get(request: any) {
 	try {
-		const { invoice } = await lnurl.requestInvoice({
-			lnUrlOrAddress: RECIPIENT,
-			tokens: AMOUNT
-		});
-		console.log('payment req server', invoice);
+		// const { invoice } = await lnurl.requestInvoice({
+		// 	lnUrlOrAddress: RECIPIENT,
+		// 	tokens: AMOUNT
+		// });
+		console.log('payment req server');
 
 		// const invoiceParsed = parsePaymentRequest({ request: invoice });
 
 		return {
 			status: 200,
 			body: {
-				payment_request: invoice,
+        hello: 'hello'
+				// payment_request: invoice,
 				// payment_hash: invoiceParsed.id
 			}
 		};
@@ -25,7 +26,7 @@ export async function get(request: any) {
 		return {
 			status: 500,
 			body: {
-				error: console.error(err)
+				error: console.error('hello', err)
 			}
 		};
 	}
