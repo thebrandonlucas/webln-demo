@@ -2,7 +2,7 @@
 import preprocess from 'svelte-preprocess';
 
 import adapter from '@sveltejs/adapter-netlify';
-const pkg = await import('./package.json', { assert: { type: 'json' } });
+// const pkg = await import('./package.json', { assert: { type: 'json' } });
 
 /** @type {import('@sveltejs/kit').Config} */
 
@@ -15,12 +15,12 @@ const config = {
 		})
 	],
 	kit: {
-		adapter: adapter(),
-		vite: {
-			ssr: {
-				noExternal: Object.keys(pkg.dependencies || {})
-			}
-		}
+		adapter: adapter()
+		// vite: {
+		// 	ssr: {
+		// 		noExternal: Object.keys(pkg.dependencies || {})
+		// 	}
+		// }
 	}
 };
 
