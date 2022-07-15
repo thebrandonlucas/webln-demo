@@ -50,10 +50,10 @@
 				// 	Range: 'bytes=0-499'
 				// }
 			});
-			const { payment_request, payment_hash } = await response.json();
+			const { hello, payment_request, payment_hash } = await response.json();
 
 			paused = true;
-      console.log('p', payment_request, payment_hash)
+      console.log('p',hello, payment_request, payment_hash)
 			const paymentResponse = await sendPayment(payment_request);
 
 			const isPaymentValid = await validatePayment(paymentResponse.preimage, payment_hash);
