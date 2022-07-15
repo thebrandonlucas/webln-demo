@@ -33,11 +33,12 @@ async function get(request) {
       lnUrlOrAddress: RECIPIENT,
       tokens: AMOUNT
     });
-    console.log("payment req server", invoice);
+    console.log("payment req server");
     const invoiceParsed = (0, import_invoices.parsePaymentRequest)({ request: invoice });
     return {
       status: 200,
       body: {
+        hello: "hello",
         payment_request: invoice,
         payment_hash: invoiceParsed.id
       }
@@ -46,7 +47,8 @@ async function get(request) {
     return {
       status: 500,
       body: {
-        error: console.error(err)
+        error: err.message,
+        message: "hello"
       }
     };
   }

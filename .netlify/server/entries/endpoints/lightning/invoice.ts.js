@@ -22,4 +22,10 @@ __export(stdin_exports, {
 module.exports = __toCommonJS(stdin_exports);
 var import_lightning = require("lightning");
 async function get(request) {
+  return {
+    status: 200,
+    body: {
+      hello: "hello"
+    }
+  };
 }
